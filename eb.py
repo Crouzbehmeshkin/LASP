@@ -1,7 +1,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
 
 r"""
-Modified by XXXX, October 2022.
+Modified by Rouzbeh Meshkinnejad, October 2022.
 The main modification has been to produce gradients for wights as well as inputs in the backward
 function of conv and linear layers. These gradients will symbolically represent the saliency of
 weights, and will be easy to fetch. Regularization based on these saliency values will then be
@@ -364,7 +364,7 @@ class ExcitationBackpropContext(object):
                     grad_inputs_[0] = torch.clamp(grad_inputs_[0], min=0)
                     grad_inputs_[0] *= input
 
-                ### Added by XXXX, hope I don't break it! ###
+                ### Added by Rouzbeh Meshkinnejad, hope I don't break it! ###
                 # another forward pass using the computed input gradients,
                 # to compute the geometric mean of input and output activations
                 # as a saliency measure for the weights.
